@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2CRSI — Analyse & Perspectives 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #070b14;
+    --surface: #0e1526;
+    --surface2: #162033;
+    --border: #1d2d45;
+    --accent: #38bdf8;
+    --accent2: #818cf8;
+    --green: #34d399;
+    --warn: #fbbf24;
+    --danger: #f87171;
+    --text: #cbd5e1;
+    --heading: #f1f5f9;
+    --muted: #475569;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.7;
+    padding: 28px 18px 60px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0e1526 60%, #0f2040);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: 14px;
+    padding: 26px 28px 22px;
+    margin-bottom: 32px;
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: 'AI';
+    position: absolute; right: 24px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 90px; font-weight: 800;
+    color: rgba(56,189,248,0.04);
+    font-family: 'IBM Plex Mono', monospace;
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(56,189,248,0.1);
+    border: 1px solid rgba(56,189,248,0.25);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px; font-weight: 700;
+    color: var(--accent); letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 24px; font-weight: 800;
+    color: var(--heading); line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 16px;
+    font-size: 12px; color: var(--muted);
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 5px; }
+
+  /* SECTION LABEL */
+  .slabel {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .slabel::after { content:''; flex:1; height:1px; background:var(--border); }
+
+  /* KPI GRID */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+    gap: 10px; margin-bottom: 30px;
+  }
+  .kpi {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .kpi-lbl { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+  .kpi-val { font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 600; color: var(--heading); margin-bottom: 3px; }
+  .kpi-d { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700; }
+  .kpi-d.up { color: var(--green); }
+  .kpi-d.warn { color: var(--warn); }
+  .kpi-d.blue { color: var(--accent); }
+  .kpi-sub { font-size: 10.5px; color: var(--muted); margin-top: 2px; }
+
+  /* CARD */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 22px;
+    margin-bottom: 12px;
+  }
+  .card h3 {
+    font-size: 14.5px; font-weight: 700;
+    color: var(--heading); margin-bottom: 11px;
+    display: flex; align-items: center; gap: 9px;
+  }
+  .card h3 .ic {
+    width: 26px; height: 26px; border-radius: 6px;
+    background: rgba(56,189,248,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; flex-shrink: 0;
+  }
+  .card p { color: #94a3b8; margin-bottom: 9px; font-size: 14px; }
+  .card p:last-child { margin-bottom: 0; }
+  strong { color: var(--heading); font-weight: 600; }
+  .hl { color: var(--green); font-weight: 600; }
+  .hl-b { color: var(--accent); font-weight: 600; }
+  .hl-w { color: var(--warn); font-weight: 600; }
+  .hl-r { color: var(--danger); font-weight: 600; }
+
+  /* TABLE */
+  .dt { width:100%; border-collapse:collapse; font-size:13px; margin:10px 0; }
+  .dt th { text-align:left; padding:8px 10px; background:var(--surface2); color:var(--muted); font-size:10.5px; text-transform:uppercase; letter-spacing:1px; font-weight:600; }
+  .dt td { padding:8px 10px; border-bottom:1px solid var(--border); color:#94a3b8; }
+  .dt tr:last-child td { border-bottom:none; }
+  .dt td:first-child { color:var(--heading); font-weight:600; }
+  .dt td.mono { font-family:'IBM Plex Mono', monospace; }
+  .dt td.g { color:var(--green); font-family:'IBM Plex Mono', monospace; font-weight:700; }
+  .dt td.w { color:var(--warn); font-family:'IBM Plex Mono', monospace; font-weight:700; }
+  .dt td.b { color:var(--accent); font-family:'IBM Plex Mono', monospace; font-weight:700; }
+
+  /* LIST */
+  .ul { list-style:none; padding:0; }
+  .ul li { padding:4px 0 4px 20px; position:relative; color:#94a3b8; font-size:14px; }
+  .ul li::before { content:'→'; position:absolute; left:0; color:var(--green); font-weight:700; }
+  .ul li.risk::before { content:'⚠'; color:var(--danger); font-size:11px; top:6px; }
+  .ul li.cat::before { content:'◆'; color:var(--accent); font-size:9px; top:7px; }
+
+  /* TAG */
+  .tag { display:inline-block; padding:2px 9px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:0.3px; }
+  .tg { background:rgba(52,211,153,0.12); color:var(--green); }
+  .tb { background:rgba(56,189,248,0.12); color:var(--accent); }
+  .tw { background:rgba(251,191,36,0.12); color:var(--warn); }
+  .tr { background:rgba(248,113,113,0.12); color:var(--danger); }
+  .tv { background:rgba(129,140,248,0.12); color:var(--accent2); }
+
+  /* FIBO */
+  .frow { display:flex; align-items:center; gap:10px; padding:7px 0; border-bottom:1px solid var(--border); }
+  .frow:last-child { border-bottom:none; }
+  .flvl { font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted); width:60px; }
+  .fprice { font-family:'IBM Plex Mono', monospace; font-size:15px; font-weight:600; color:var(--heading); width:65px; }
+  .fbar { flex:1; height:4px; background:var(--surface2); border-radius:2px; overflow:hidden; }
+  .fbar-fill { height:100%; border-radius:2px; }
+  .ftag { width:90px; text-align:right; }
+
+  /* TIMELINE */
+  .timeline { position:relative; padding-left: 20px; }
+  .timeline::before { content:''; position:absolute; left:6px; top:6px; bottom:6px; width:2px; background:var(--border); }
+  .tl-item { position:relative; padding-bottom:16px; }
+  .tl-item:last-child { padding-bottom:0; }
+  .tl-dot { position:absolute; left:-18px; top:5px; width:10px; height:10px; border-radius:50%; border:2px solid var(--accent); background:var(--bg); }
+  .tl-date { font-size:11px; font-family:'IBM Plex Mono', monospace; color:var(--accent); font-weight:600; margin-bottom:2px; }
+  .tl-label { font-size:13.5px; color:var(--heading); font-weight:600; }
+  .tl-desc { font-size:12.5px; color:var(--muted); }
+
+  /* PERSPECTIVES */
+  .pg { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:12px; }
+  @media(max-width:600px){ .pg{grid-template-columns:1fr;} }
+  .pc { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px; }
+  .pc .hz { font-size:10.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px; }
+  .pc h4 { font-size:13px; color:var(--heading); margin-bottom:6px; }
+  .pc ul { list-style:none; padding:0; }
+  .pc ul li { font-size:12.5px; color:#64748b; padding:3px 0 3px 12px; position:relative; }
+  .pc ul li::before { content:'·'; position:absolute; left:0; font-weight:900; font-size:16px; top:-1px; }
+
+  /* VERDICT */
+  .verdict {
+    background: linear-gradient(135deg, rgba(56,189,248,0.05), rgba(52,211,153,0.05));
+    border:1px solid rgba(56,189,248,0.2);
+    border-radius:12px; padding:22px;
+  }
+  .verdict .vt { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
+  .verdict p { color:#94a3b8; margin-bottom:9px; font-size:14px; }
+  .verdict p:last-child { margin-bottom:0; }
+  .verdict .conclu { font-size:14.5px; font-weight:600; color:var(--heading); border-top:1px solid var(--border); padding-top:13px; margin-top:13px; }
+
+  .gap { height:26px; }
+  .gap-s { height:10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">📡 Analyse Forum · AL2SI · Euronext Growth Paris</div>
+    <h1>2CRSI — Analyse Fondamentale & Technique<br>+ Perspectives CT / MT / LT</h1>
+    <div class="hero-meta">
+      <span>📅 26 février 2026</span>
+      <span>💶 Cours ~27,70 € (-7,36%)</span>
+      <span>📊 Plus haut 52s : 30,80 € · Plus bas : 3,04 €</span>
+      <span>⚠️ NPC — pas un conseil en investissement</span>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="slabel">Chiffres clés — Exercice 2024/2025 (clos 30 juin 2025)</div>
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-lbl">CA FY 2024/25</div>
+      <div class="kpi-val">220,8 M€</div>
+      <div class="kpi-d up">▲ +31%</div>
+      <div class="kpi-sub">objectif 200 M€ battu</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">CA S1 2025/26</div>
+      <div class="kpi-val">&gt;198 M€</div>
+      <div class="kpi-d up">▲ +850%</div>
+      <div class="kpi-sub">vs 20,9 M€ en S1 2024/25</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Trésorerie nette</div>
+      <div class="kpi-val">&gt;9 M€</div>
+      <div class="kpi-d up">▲ vs -0,22 M€</div>
+      <div class="kpi-sub">au 31/12/2025 — retournement</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">EBITDA S1 2024/25</div>
+      <div class="kpi-val">2,1 M€</div>
+      <div class="kpi-d blue">10% du CA</div>
+      <div class="kpi-sub">résultat net +2,6 M€ ✓</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Objectif FY 2025/26</div>
+      <div class="kpi-val">&gt;300 M€</div>
+      <div class="kpi-d up">▲ dépassement</div>
+      <div class="kpi-sub">annoncé le 29/01/2026</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">Marge EBITDA cible</div>
+      <div class="kpi-val">&gt;12%</div>
+      <div class="kpi-d warn">~36 M€ visés</div>
+      <div class="kpi-sub">défi mais objectif relevé</div>
+    </div>
+  </div>
+
+  <!-- CONTEXTE -->
+  <div class="gap"></div>
+  <div class="slabel">Présentation — qui est 2CRSI ?</div>
+  <div class="card">
+    <h3><span class="ic">🖥️</span> Fabricant strasbourgeois de serveurs IA et HPC</h3>
+    <p>Fondée en 2005 à Strasbourg, <strong>2CRSI conçoit et fabrique des serveurs haute performance sur mesure</strong> pour les marchés de l'IA, du calcul intensif (HPC) et du stockage. Le groupe est présent dans plus de 50 pays et se distingue par son expertise dans les technologies de <strong>refroidissement avancé</strong> : immersion de serveurs et refroidissement liquide direct (DLC).</p>
+    <p>La société est positionnée sur la vague de fond de l'<span class="hl-b">explosion mondiale des infrastructures IA</span> : le marché des serveurs a progressé de +45% selon IDC, et la demande pour des solutions haute densité et éco-efficientes ne fait que s'accélérer.</p>
+    <p>Cotée sur <strong>Euronext Growth Paris</strong> (ISIN : FR0013341781 — code : AL2SI), la valeur a multiplié son cours par <span class="hl">plus de 10x</span> en 12 mois, passant de ~3 € à 30,80 € (plus haut 52 semaines).</p>
+  </div>
+
+  <!-- RÉSULTATS -->
+  <div class="gap"></div>
+  <div class="slabel">Analyse des résultats</div>
+
+  <div class="card">
+    <h3><span class="ic">🚀</span> 1. Une accélération spectaculaire du CA</h3>
+    <p>L'exercice 2024/25 (clos au 30 juin 2025) s'est terminé à <span class="hl">220,8 M€ (+31%)</span>, dépassant nettement l'objectif de 200 M€. Mais ce chiffre masque une réalité encore plus frappante :</p>
+    <table class="dt">
+      <tr><th>Période</th><th>CA</th><th>Variation</th><th>Note</th></tr>
+      <tr><td>S1 2023/24</td><td class="mono">10,7 M€</td><td class="w">—</td><td style="color:#475569;font-size:12px">base très basse</td></tr>
+      <tr><td>S1 2024/25</td><td class="mono">20,9 M€</td><td class="g">+95%</td><td style="color:#475569;font-size:12px">début accélération</td></tr>
+      <tr><td>S2 2024/25</td><td class="mono">~200 M€</td><td class="g">×10</td><td style="color:#475569;font-size:12px">contrats US/UK massifs</td></tr>
+      <tr><td><strong>S1 2025/26</strong></td><td class="mono"><strong>&gt;198 M€</strong></td><td class="g"><strong>+850%</strong></td><td style="color:#475569;font-size:12px">semestre = tout FY précédent</td></tr>
+    </table>
+    <p>Le S1 2025/26 à lui seul (<span class="hl">+850% en un an</span>) représente quasiment autant que l'intégralité de l'exercice 2024/25. La montée en puissance des contrats majeurs — notamment le contrat de <strong>610 M$ avec un opérateur américain de datacenter</strong> et un contrat de <strong>54 M$ au Royaume-Uni</strong> — explique cette transformation radicale.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="ic">💰</span> 2. Retournement de la trésorerie — signal fort</h3>
+    <p>Point clé souvent sous-estimé par le marché : la <strong>trésorerie est passée de -0,22 M€ à +9 M€</strong> en 6 mois. Ce retournement d'une société qui brûlait du cash vers une génération de trésorerie positive est un signal de <span class="hl">maturité opérationnelle</span>.</p>
+    <p>Le groupe confirme qu'il peut <span class="hl-b">financer sa croissance sans recourir aux marchés financiers</span>, ce qui élimine un risque majeur de dilution qui pesait sur la valorisation ces dernières années.</p>
+    <p>Le projet <strong>ÆTHER AI Gigafactory</strong> — 200 000 GPUs, bilan carbone négatif, financement mix public/privé (programme européen InvestAI) — <strong>n'aura pas d'impact significatif sur la trésorerie</strong> de 2CRSI.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="ic">📊</span> 3. La marge : le défi central de 2025/26</h3>
+    <p>Le groupe cible une marge EBITDA de <span class="hl-w">&gt;12%</span> (environ 36 M€ pour 300 M€ de CA). L'EBITDA était à 10% du CA en S1 2024/25 sur une base faible. Avec le changement d'échelle massif du CA, la <strong>dilution des coûts fixes devrait mécaniquement améliorer les marges</strong>.</p>
+    <p>La diversification vers <strong>2CRSI Cloud Solutions</strong> (lancée en mars 2025) et les services associés commence à modifier le mix commercial vers plus de récurrence et de valeur ajoutée. Le partenariat technologique avec <strong>Chemours</strong> (refroidissement par immersion, signé le 25/02/2026) renforce le positionnement différenciant.</p>
+    <ul class="ul">
+      <li>Concurrence intense des OEMs américains et chinois = pression sur les marges hardware</li>
+      <li class="cat">Montée des services Cloud Solutions = amélioration progressive du mix</li>
+      <li class="cat">Robotique avancée / applications gouvernementales = niches moins concurrentielles et à marge supérieure</li>
+    </ul>
+  </div>
+
+  <!-- CATALYSEURS RÉCENTS -->
+  <div class="gap"></div>
+  <div class="slabel">Actualités récentes — catalyseurs</div>
+  <div class="card">
+    <h3><span class="ic">📌</span> Annonces clés février 2026</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">25 FÉV 2026</div>
+        <div class="tl-label">Partenariat avec Chemours <span class="tag tb">Nouveau</span></div>
+        <div class="tl-desc">Accord de développement conjoint (JDA) pour refroidissement par immersion biphasé. 2CRSI +13,5% le jour de l'annonce. Différenciation technologique majeure.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">29 JAN 2026</div>
+        <div class="tl-label">CA S1 2025/26 : &gt;198 M€ <span class="tag tg">+850%</span></div>
+        <div class="tl-desc">Annonce du dépassement des objectifs précédents, tant en CA qu'en marge EBITDA. Trésorerie positive confirmée.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">JAN 2026</div>
+        <div class="tl-label">Négociation exclusive — site industriel Grand Est</div>
+        <div class="tl-desc">Structuration d'un site industriel stratégique en France pour répondre à la demande croissante. Signal de montée en capacité.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">DÉJÀ EN COURS</div>
+        <div class="tl-label">Consortium ÆTHER — AI Gigafactory européenne <span class="tag tv">LT</span></div>
+        <div class="tl-desc">2CRSI architecte industriel d'une Gigafactory souveraine de 200 000 GPUs. Commission européenne : consultation finale mi-mars 2026. Financement InvestAI (sans impact tréso 2CRSI).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECHNIQUE -->
+  <div class="gap"></div>
+  <div class="slabel">Analyse technique — Graphique 1 semaine</div>
+  <div class="card">
+    <h3><span class="ic">📈</span> Niveaux Fibonacci — Extension depuis la base 10,13 €</h3>
+    <p>Contrairement à une correction classique, le graphique montre une <strong>extension haussière depuis 10,13 €</strong> (base 0%). Le cours à <span class="hl-w">~27,70 €</span> se situe entre les niveaux <strong>123,68%</strong> et <strong>138,2%</strong>, en territoire d'extension — signe d'une tendance haussière puissante.</p>
+
+    <div style="margin:14px 0">
+      <div class="frow">
+        <div class="flvl">0%</div>
+        <div class="fprice" style="color:var(--muted)">10,13 €</div>
+        <div class="fbar"><div class="fbar-fill" style="width:5%;background:#334155"></div></div>
+        <span class="ftag"><span class="tag tw">base départ</span></span>
+      </div>
+      <div class="frow">
+        <div class="flvl">23,6%</div>
+        <div class="fprice">13,31 €</div>
+        <div class="fbar"><div class="fbar-fill" style="width:10%;background:#334155"></div></div>
+        <span class="ftag"><span class="tag" style="background:rgba(71,85,105,0.2);color:#64748b">S3</span></span>
+      </div>
+      <div class="frow">
+        <div class="flvl">38,2%</div>
+        <div class="fprice">15,27 €</div>
+        <div class="fbar"><div class="fbar-fill" style="width:18%;background:#334155"></div></div>
+        <span class="ftag"><span class="tag" style="background:rgba(71,85,105,0.2);color:#64748b">S2</span></span>
+      </div>
+      <div class="frow">
+        <div class="flvl">61,8%</div>
+        <div class="fprice">18,45 €</div>
+        <div class="fbar"><div class="fbar-fill" style="width:30%;background:var(--accent2)"></div></div>
+        <span class="ftag"><span class="tag tv">S1</span></span>
+      </div>
+      <div class="frow">
+        <div class="flvl">100%</div>
+        <div class="fprice">23,59 €</div>
+        <div class="fbar"><div class="fbar-fill" style="width:48%;background:var(--warn)"></div></div>
+        <span class="ftag"><span class="tag tw">pivot</span></span>
+      </div>
+      <div class="frow" style="background:rgba(56,189,248,0.04);border-radius:6px;padding:7px 4px">
+        <div class="flvl" style="color:var(--accent)">123,7%</div>
+        <div class="fprice" style="color:var(--accent)">26,78 €</div>
+        <div class="fbar"><div class="fbar-fill" style="width:68%;background:var(--accent)"></div></div>
+        <span class="ftag"><span class="tag tb">support</span></span>
+      </div>
+      <div class="frow" style="background:rgba(251,191,36,0.03);border-radius:6px;padding:7px 4px">
+        <div class="flvl" style="color:var(--warn)">138,2%</div>
+        <div class="fprice" style="color:var(--warn)">28,73 €</div>
+        <div class="fbar"><div class="fbar-fill" style="width:80%;background:var(--warn)"></div></div>
+        <span class="ftag"><span class="tag tw">R1</span></span>
+      </div>
+      <div class="frow">
+        <div class="flvl">161,8%</div>
+        <div class="fprice">31,91 €</div>
+        <div class="fbar"><div class="fbar-fill" style="width:100%;background:var(--green)"></div></div>
+        <span class="ftag"><span class="tag tg">R2</span></span>
+      </div>
+    </div>
+    <p>Le cours actuel de <span class="hl-w">27,70 €</span> se trouve en zone d'appui sur le Fibonacci 123,7% (26,78 €). La résistance immédiate est à 28,73 € (138,2%), puis le prochain objectif haussier est à 31,91 € (161,8%).</p>
+
+    <div style="background:rgba(248,113,113,0.07);border:1px solid rgba(248,113,113,0.25);border-radius:8px;padding:14px 16px;margin:12px 0;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--danger);margin-bottom:8px;">⚠️ Signal d'alerte — RSI hebdomadaire à 84</div>
+      <p style="color:#fca5a5;margin-bottom:6px;font-size:13.5px;">Le RSI (14) en données <strong style="color:#fef2f2">hebdomadaires</strong> atteint <strong style="color:#fef2f2">84,33</strong> — zone de <span style="color:var(--danger);font-weight:700">surchauffe extrême</span>. Un RSI &gt; 80 en hebdo est un signal rare qui précède historiquement des corrections significatives ou au minimum des consolidations prolongées.</p>
+      <p style="color:#fca5a5;margin-bottom:0;font-size:13.5px;">Le MACD Zéro Lag accélère encore à la hausse, ce qui témoigne d'une tendance puissante — mais ce type de divergence RSI/tendance se résout généralement par une <strong style="color:#fef2f2">consolidation latérale de plusieurs semaines</strong> ou une <strong style="color:#fef2f2">correction vers 23-26 €</strong> avant une éventuelle reprise.</p>
+    </div>
+
+    <p>La baisse de -7,36% de ce jour pourrait être le <strong>début d'un refroidissement technique nécessaire</strong> plutôt qu'une simple prise de bénéfices. La tendance de fond reste haussière tant que <strong>23,59 € (Fibo 100%)</strong> tient, mais l'entrée dans cette zone de RSI extrême impose une gestion du risque renforcée.</p>
+  </div>
+
+  <!-- PERSPECTIVES -->
+  <div class="gap"></div>
+  <div class="slabel">Perspectives CT / MT / LT</div>
+
+  <div class="card" style="margin-bottom:12px">
+    <h3><span class="ic">🎯</span> Guidance officielle FY 2025/2026</h3>
+    <table class="dt">
+      <tr><th>Indicateur</th><th>Objectif officiel</th><th>Estimation / contexte</th></tr>
+      <tr><td>Chiffre d'affaires annuel</td><td class="b">Dépasser 300 M€</td><td style="color:#64748b;font-size:12px">S1 seul &gt;198 M€ → quasi-acquis</td></tr>
+      <tr><td>Marge EBITDA</td><td class="b">&gt;12%</td><td style="color:#64748b;font-size:12px">~36 M€ — défi mais relevé</td></tr>
+      <tr><td>Cash-flow exploitation</td><td class="g">Positif</td><td style="color:#64748b;font-size:12px">Déjà positif au S1 ✓</td></tr>
+      <tr><td>Résultats semestriels S1</td><td class="b">26 mars 2026</td><td style="color:#64748b;font-size:12px">Prochain catalyseur majeur</td></tr>
+    </table>
+  </div>
+
+  <div class="pg">
+    <div class="pc">
+      <div class="hz" style="color:var(--accent)">🕐 CT · 0-3 mois</div>
+      <h4>Catalyseurs</h4>
+      <ul>
+        <li>Résultats S1 complets 26 mars (EBITDA, bilan)</li>
+        <li>Poursuite partenariat Chemours</li>
+        <li>Avancée projet site Grand Est</li>
+        <li>Consultation ÆTHER / InvestAI mi-mars</li>
+        <li>Dynamique CA S2 → CA annuel 23 juil.</li>
+      </ul>
+      <h4 style="margin-top:10px;color:var(--warn)">Risques CT</h4>
+      <ul>
+        <li><strong style="color:var(--danger)">RSI hebdo à 84 — surchauffe extrême</strong></li>
+        <li>Correction technique probable avant reprise</li>
+        <li>Prise de bénéfices après x10 en 12 mois</li>
+        <li>Confirmation des marges EBITDA</li>
+        <li>Volatilité forte (small cap, volumes)</li>
+      </ul>
+    </div>
+    <div class="pc">
+      <div class="hz" style="color:var(--green)">📅 MT · 3-18 mois</div>
+      <h4>Moteurs</h4>
+      <ul>
+        <li>Montée en puissance contrat 610 M$ US</li>
+        <li>2CRSI Cloud Solutions — mix récurrent</li>
+        <li>Robotique / défense / gouvernemental</li>
+        <li>Ouverture site industriel Grand Est</li>
+        <li>Nouvelles commandes sur base commerciale US/EU/Asie/Moyen-Orient</li>
+      </ul>
+      <h4 style="margin-top:10px;color:var(--warn)">Risques MT</h4>
+      <ul>
+        <li>Exécution industrielle à grande échelle</li>
+        <li>Dilution potentielle (si levée de fonds)</li>
+        <li>Guerre des prix OEM US/Chine</li>
+      </ul>
+    </div>
+    <div class="pc">
+      <div class="hz" style="color:var(--accent2)">🔭 LT · 18 mois+</div>
+      <h4>Thèse haussière</h4>
+      <ul>
+        <li>ÆTHER : architecte d'une Gigafactory européenne souveraine</li>
+        <li>Standard de refroidissement par immersion</li>
+        <li>Transition hardware → services/cloud</li>
+        <li>Expansion dans la défense et secteurs régulés</li>
+        <li>Internationalisation (50+ pays)</li>
+      </ul>
+      <h4 style="margin-top:10px;color:var(--danger)">Risques LT</h4>
+      <ul>
+        <li>NVIDIA / AMD en direct sur le marché</li>
+        <li>Concentration sur quelques gros clients</li>
+        <li>ÆTHER : exécution complexe, financement public incertain</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- VERDICT -->
+  <div class="gap"></div>
+  <div class="slabel">Mon avis personnel</div>
+  <div class="verdict">
+    <div class="vt">💬 Verdict</div>
+    <p>2CRSI est <strong>une des rares small caps françaises positionnées directement sur la révolution IA hardware</strong>. La croissance de +850% au S1 2025/26 n'est pas anecdotique : elle confirme l'exécution réussie de contrats majeurs (610 M$ US) dans un marché mondial en explosion.</p>
+    <p>Les points qui me semblent sous-évalués par le marché :</p>
+    <ul class="ul" style="margin: 8px 0">
+      <li>Le <span class="hl">retournement de trésorerie</span> (–0,22 M€ → +9 M€ en 6 mois) — fin du risque de dilution</li>
+      <li>Le <span class="hl-b">projet ÆTHER</span> comme optionalité gratuite — si la gigafactory se concrétise, c'est un changement de dimension pour la société</li>
+      <li>Le <span class="hl">partenariat Chemours</span> sur le refroidissement par immersion — avantage concurrentiel technologique durable</li>
+      <li>La dynamique commerciale <span class="hl">4 zones géographiques</span> simultanées (US, Europe, Asie, Moyen-Orient)</li>
+    </ul>
+    <p><strong>La principale inconnue reste la marge EBITDA.</strong> Le groupe vise &gt;12%, mais dans un secteur de hardware sous forte pression concurrentielle, c'est un défi réel. Les résultats semestriels du 26 mars seront le vrai test.</p>
+    <div class="conclu">
+      🎯 En résumé : <strong>dossier hautement spéculatif avec des fondamentaux en transformation rapide, mais attention au signal technique.</strong> Le RSI hebdomadaire à <span class="hl-r">84,33</span> est en zone de surchauffe extrême — une <strong>consolidation ou correction technique est probable à CT</strong> avant toute reprise haussière. <span class="hl-w">Zone de support à surveiller : 26,78 € → 23,59 €. Ne pas acheter à la poursuite sans gestion du risque.</span> Le vrai catalyseur fondamental reste les résultats semestriels du 26 mars.
+    </div>
+  </div>
+
+  <div style="margin-top:20px;padding:12px;background:var(--surface);border-radius:8px;font-size:11.5px;color:var(--muted);text-align:center;border:1px solid var(--border)">
+    Sources : Communiqués 2CRSI (juil. 2025, jan. 2026, fév. 2026), Zonebourse, Investing.com · Analyse personnelle non professionnelle · Ne constitue pas un conseil en investissement · DYOR
+  </div>
+
+</div>
+</body>
+</html>
