@@ -31,18 +31,13 @@
     padding: 32px 16px;
   }
 
-  .container {
-    max-width: 780px;
-    margin: 0 auto;
-  }
+  .container { max-width: 800px; margin: 0 auto; }
 
-  /* Header */
   .header {
     border-left: 3px solid var(--blue);
     padding-left: 16px;
     margin-bottom: 28px;
   }
-
   .header .ticker {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
@@ -51,36 +46,21 @@
     text-transform: uppercase;
     margin-bottom: 4px;
   }
+  .header h1 { font-size: 22px; font-weight: 600; color: #fff; }
+  .header .meta { font-size: 12px; color: var(--muted); margin-top: 6px; }
 
-  .header h1 {
-    font-size: 22px;
-    font-weight: 600;
-    color: #fff;
+  .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 4px; padding: 4px 10px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 13px;
   }
+  .badge .price { color: #fff; font-weight: 600; }
+  .badge .chg-g { color: var(--green); }
+  .badge .chg-r { color: var(--red); }
+  .badge .ath { color: var(--yellow); }
 
-  .header .meta {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 6px;
-  }
-
-  .price-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 4px 10px;
-    margin-top: 8px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-  }
-
-  .price-badge .price { color: #fff; font-weight: 600; }
-  .price-badge .chg { color: var(--green); }
-
-  /* Sections */
   .section {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -91,216 +71,166 @@
 
   .section-title {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
   }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* Table */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-  }
-
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
   th {
-    text-align: left;
-    color: var(--muted);
-    font-weight: 400;
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 6px 10px;
-    border-bottom: 1px solid var(--border);
+    text-align: left; color: var(--muted); font-weight: 400;
+    font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    padding: 6px 10px; border-bottom: 1px solid var(--border);
   }
-
-  td {
-    padding: 8px 10px;
-    border-bottom: 1px solid rgba(33,38,45,0.6);
-  }
-
+  td { padding: 8px 10px; border-bottom: 1px solid rgba(33,38,45,0.6); }
   tr:last-child td { border-bottom: none; }
 
   .tag {
-    display: inline-block;
-    padding: 2px 7px;
-    border-radius: 3px;
-    font-size: 11px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 600;
+    display: inline-block; padding: 2px 7px; border-radius: 3px;
+    font-size: 11px; font-family: 'IBM Plex Mono', monospace; font-weight: 600;
   }
+  .tg { background: rgba(63,185,80,0.15); color: var(--green); }
+  .tr { background: rgba(248,81,73,0.15); color: var(--red); }
+  .ty { background: rgba(227,179,65,0.15); color: var(--yellow); }
+  .tb { background: rgba(88,166,255,0.15); color: var(--blue); }
+  .tp { background: rgba(188,140,255,0.15); color: var(--purple); }
 
-  .tag-green { background: rgba(63,185,80,0.15); color: var(--green); }
-  .tag-red   { background: rgba(248,81,73,0.15); color: var(--red); }
-  .tag-yellow{ background: rgba(227,179,65,0.15); color: var(--yellow); }
-  .tag-blue  { background: rgba(88,166,255,0.15); color: var(--blue); }
-  .tag-purple{ background: rgba(188,140,255,0.15); color: var(--purple); }
-
-  /* Elliott boxes */
-  .waves {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-    margin-top: 4px;
+  /* Fibonacci visual bar */
+  .fib-visual {
+    position: relative;
+    margin-top: 16px;
+    padding: 0 8px;
   }
-
-  .wave-box {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 10px 8px;
-    text-align: center;
+  .fib-track {
+    position: relative;
+    height: 320px;
+    border-left: 2px solid var(--border);
+    margin-left: 80px;
   }
-
-  .wave-box .wlabel {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    margin-bottom: 4px;
-  }
-
-  .wave-box .wrange {
-    font-size: 11px;
-    font-weight: 600;
-  }
-
-  .wave-box .wstatus {
-    font-size: 10px;
-    margin-top: 4px;
-  }
-
-  /* Scenarios */
-  .scenarios {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .scenario {
-    background: var(--bg);
-    border-radius: 6px;
-    padding: 14px;
-  }
-
-  .scenario.bull { border-left: 2px solid var(--green); }
-  .scenario.bear { border-left: 2px solid var(--red); }
-
-  .scenario .sc-title {
-    font-weight: 600;
-    font-size: 12px;
-    margin-bottom: 8px;
-  }
-
-  .scenario.bull .sc-title { color: var(--green); }
-  .scenario.bear .sc-title { color: var(--red); }
-
-  .scenario p {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  .scenario .levels {
-    margin-top: 8px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  /* Alert box */
-  .alert {
-    background: rgba(227,179,65,0.08);
-    border: 1px solid rgba(227,179,65,0.3);
-    border-radius: 6px;
-    padding: 12px 16px;
-    font-size: 13px;
-    color: var(--yellow);
-    margin-top: 6px;
-  }
-
-  /* Copy button */
-  .copy-btn {
-    display: block;
-    width: 100%;
-    margin-top: 20px;
-    background: rgba(88,166,255,0.1);
-    border: 1px solid rgba(88,166,255,0.3);
-    color: var(--blue);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 1px;
-    padding: 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  .copy-btn:hover { background: rgba(88,166,255,0.2); }
-
-  .divider { height: 1px; background: var(--border); margin: 16px 0; }
-
-  .footnote {
-    font-size: 11px;
-    color: var(--muted);
-    text-align: center;
-    margin-top: 20px;
-    font-style: italic;
-  }
-
-  /* Weinstein phases visual */
-  .weinstein-bar {
-    display: flex;
-    gap: 4px;
-    margin-top: 10px;
-    height: 32px;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .w-phase {
+  .fib-line {
+    position: absolute;
+    left: 0; right: -20px;
+    height: 1px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 600;
   }
-
-  /* Toast */
-  #toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: var(--green);
-    color: #000;
-    padding: 8px 20px;
-    border-radius: 100px;
+  .fib-line .fib-bar {
+    flex: 1;
+    height: 2px;
+    margin-right: 8px;
+  }
+  .fib-line .fib-label-left {
+    position: absolute;
+    left: -84px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    text-align: right;
+    width: 76px;
+  }
+  .fib-line .fib-label-right {
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
     font-weight: 600;
-    opacity: 0;
-    transition: all 0.3s;
-    pointer-events: none;
+    white-space: nowrap;
+  }
+  .fib-line .fib-tag {
+    margin-left: 8px;
+    font-size: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  /* Price cursor */
+  .price-cursor {
+    position: absolute;
+    left: -6px;
+    width: 12px;
+    height: 12px;
+    background: var(--yellow);
+    border: 2px solid var(--bg);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+  .price-cursor-label {
+    position: absolute;
+    left: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--yellow);
+    font-weight: 600;
+    transform: translateY(-50%);
+    background: var(--bg);
+    padding: 1px 6px;
+    border-radius: 3px;
+    border: 1px solid rgba(227,179,65,0.4);
+    z-index: 10;
+    white-space: nowrap;
   }
 
-  #toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
+  /* Waves */
+  .waves { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 4px; }
+  .wave-box {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 6px; padding: 10px 8px; text-align: center;
   }
+  .wave-box .wlabel { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--muted); margin-bottom: 4px; }
+  .wave-box .wrange { font-size: 11px; font-weight: 600; }
+  .wave-box .wstatus { font-size: 10px; margin-top: 4px; }
+
+  /* Scenarios */
+  .scenarios { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .scenario { background: var(--bg); border-radius: 6px; padding: 14px; }
+  .scenario.bull { border-left: 2px solid var(--green); }
+  .scenario.bear { border-left: 2px solid var(--red); }
+  .scenario .sc-title { font-weight: 600; font-size: 12px; margin-bottom: 8px; }
+  .scenario.bull .sc-title { color: var(--green); }
+  .scenario.bear .sc-title { color: var(--red); }
+  .scenario p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .scenario .levels { margin-top: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; display: flex; flex-direction: column; gap: 3px; }
+
+  .alert {
+    border-radius: 6px; padding: 12px 16px;
+    font-size: 13px; margin-top: 10px; line-height: 1.6;
+  }
+  .alert-y { background: rgba(227,179,65,0.08); border: 1px solid rgba(227,179,65,0.3); color: var(--yellow); }
+  .alert-r { background: rgba(248,81,73,0.06); border: 1px solid rgba(248,81,73,0.25); color: var(--red); }
+  .alert-g { background: rgba(63,185,80,0.06); border: 1px solid rgba(63,185,80,0.25); color: var(--green); }
+
+  .copy-btn {
+    display: block; width: 100%; margin-top: 20px;
+    background: rgba(88,166,255,0.1); border: 1px solid rgba(88,166,255,0.3);
+    color: var(--blue); font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px; letter-spacing: 1px; padding: 12px; border-radius: 6px;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .copy-btn:hover { background: rgba(88,166,255,0.2); }
+
+  .footnote { font-size: 11px; color: var(--muted); text-align: center; margin-top: 20px; font-style: italic; }
+
+  #toast {
+    position: fixed; bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--green); color: #000;
+    padding: 8px 20px; border-radius: 100px;
+    font-size: 12px; font-weight: 600;
+    opacity: 0; transition: all 0.3s; pointer-events: none;
+  }
+  #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  .sr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
+  .sr-box { background: var(--bg); border-radius: 6px; padding: 14px; }
+  .sr-box.res { border-left: 2px solid var(--red); }
+  .sr-box.sup { border-left: 2px solid var(--green); }
+  .sr-box h4 { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .sr-box.res h4 { color: var(--red); }
+  .sr-box.sup h4 { color: var(--green); }
+  .sr-item { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid rgba(33,38,45,0.5); font-size: 12px; }
+  .sr-item:last-child { border-bottom: none; }
+  .sr-item .level { font-family: 'IBM Plex Mono', monospace; font-weight: 600; }
+  .sr-item .reason { font-size: 11px; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -308,12 +238,14 @@
 
   <!-- Header -->
   <div class="header">
-    <div class="ticker">Euronext Paris · AL2SI · Semi-conducteurs</div>
+    <div class="ticker">Euronext Paris · AL2SI · Semi-conducteurs / Serveurs IA</div>
     <h1>2CRSI — Analyse Technique Complète</h1>
-    <div class="meta">Graphique hebdomadaire · 2 mars 2026</div>
-    <div class="price-badge">
-      <span class="price">23,30 €</span>
-      <span class="chg">▲ +8,62%</span>
+    <div class="meta">Graphique hebdomadaire · 4 mars 2026</div>
+    <div class="badges">
+      <div class="badge"><span class="price">25,10 €</span><span class="chg-g">▲ +17,02%</span></div>
+      <div class="badge"><span class="ath">ATH : 30,80€</span></div>
+      <div class="badge"><span style="color:var(--muted)">5j : </span><span class="chg-r">-16,05%</span></div>
+      <div class="badge"><span style="color:var(--muted)">Analyste 3m : </span><span class="chg-g">26,37€</span></div>
     </div>
   </div>
 
@@ -321,43 +253,36 @@
   <div class="section">
     <div class="section-title">Phases de Weinstein</div>
     <table>
-      <thead>
-        <tr>
-          <th>Phase</th>
-          <th>Période</th>
-          <th>Description</th>
-          <th>Statut</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Phase</th><th>Période</th><th>Description</th><th>Statut</th></tr></thead>
       <tbody>
         <tr>
-          <td><span class="tag tag-blue">Phase 1</span></td>
-          <td>2023 → mi-2024</td>
-          <td>Accumulation longue à plat (~5-7€), volumes faibles</td>
-          <td><span class="tag tag-blue">Terminée</span></td>
+          <td><span class="tag tb">Phase 1</span></td>
+          <td>2022 → mi-2024</td>
+          <td>Accumulation longue, prix ~0,70-5€, volumes très faibles</td>
+          <td><span class="tag tb">Terminée</span></td>
         </tr>
         <tr>
-          <td><span class="tag tag-green">Phase 2A</span></td>
-          <td>Août → Oct 2024</td>
-          <td>Breakout au-dessus MM30 semaines, volumes croissants</td>
-          <td><span class="tag tag-blue">Terminée</span></td>
+          <td><span class="tag tg">Phase 2A</span></td>
+          <td>Mi-2024 → Oct 2025</td>
+          <td>Breakout progressif, MM30 semaines franchie, volumes croissants</td>
+          <td><span class="tag tb">Terminée</span></td>
         </tr>
         <tr>
-          <td><span class="tag tag-green">Phase 2B</span></td>
-          <td>Nov 2024 → Fév 2026</td>
-          <td>Hausse violente, MM20 respectée comme support dynamique</td>
-          <td><span class="tag tag-blue">Terminée</span></td>
+          <td><span class="tag tg">Phase 2B</span></td>
+          <td>Oct 2025 → Fév 2026</td>
+          <td>Accélération violente ~10€ → 30,80€, MM20 respectée comme support</td>
+          <td><span class="tag tb">Terminée</span></td>
         </tr>
         <tr>
-          <td><span class="tag tag-yellow">Phase 3 ?</span></td>
+          <td><span class="tag ty">Phase 3 ?</span></td>
           <td>Mars 2026</td>
-          <td>Pic à ~32€, rejet brutal. Distribution ou simple correction ?</td>
-          <td><span class="tag tag-yellow">⚠ En cours</span></td>
+          <td>ATH à 30,80€, rejet brutal -16% sur 5j. Distribution ou simple correction de Phase 2 ?</td>
+          <td><span class="tag ty">⚠ En cours</span></td>
         </tr>
       </tbody>
     </table>
-    <div class="alert">
-      ⚠️ La clôture hebdo au-dessus de <strong>23,59€</strong> ce vendredi est déterminante pour confirmer qu'on reste en Phase 2 étendue plutôt qu'en distribution.
+    <div class="alert alert-y">
+      ⚠️ Clôture hebdo <strong>au-dessus de 23,75€</strong> (Fibo 123,68%) ce vendredi = signal de maintien en Phase 2. En dessous = vigilance accrue.
     </div>
   </div>
 
@@ -367,118 +292,174 @@
     <div class="waves">
       <div class="wave-box">
         <div class="wlabel">Vague 1</div>
-        <div class="wrange" style="color:var(--green)">5€ → 10€</div>
-        <div class="wstatus" style="color:var(--muted)">2023</div>
-        <div class="wstatus"><span class="tag tag-blue">✓</span></div>
+        <div class="wrange" style="color:var(--green)">~0,7€ → 5€</div>
+        <div class="wstatus" style="color:var(--muted)">2022-2024</div>
+        <div class="wstatus" style="margin-top:4px"><span class="tag tb">✓</span></div>
       </div>
       <div class="wave-box">
         <div class="wlabel">Vague 2</div>
-        <div class="wrange" style="color:var(--red)">10€ → 8€</div>
+        <div class="wrange" style="color:var(--red)">5€ → ~3€</div>
         <div class="wstatus" style="color:var(--muted)">Correction</div>
-        <div class="wstatus"><span class="tag tag-blue">✓</span></div>
+        <div class="wstatus" style="margin-top:4px"><span class="tag tb">✓</span></div>
       </div>
-      <div class="wave-box" style="border-color: var(--green);">
+      <div class="wave-box" style="border-color:var(--green)">
         <div class="wlabel">Vague 3</div>
-        <div class="wrange" style="color:var(--green)">8€ → 32€</div>
+        <div class="wrange" style="color:var(--green)">~3€ → 30,80€</div>
         <div class="wstatus" style="color:var(--muted)">Étendue</div>
-        <div class="wstatus"><span class="tag tag-green">161,8%</span></div>
+        <div class="wstatus" style="margin-top:4px"><span class="tag tg">ATH ✓</span></div>
       </div>
-      <div class="wave-box" style="border-color: var(--yellow);">
+      <div class="wave-box" style="border-color:var(--yellow)">
         <div class="wlabel">Vague 4</div>
-        <div class="wrange" style="color:var(--yellow)">32€ → ?</div>
+        <div class="wrange" style="color:var(--yellow)">30,80€ → ?</div>
         <div class="wstatus" style="color:var(--muted)">En cours</div>
-        <div class="wstatus"><span class="tag tag-yellow">ICI</span></div>
+        <div class="wstatus" style="margin-top:4px"><span class="tag ty">← ICI</span></div>
       </div>
       <div class="wave-box">
         <div class="wlabel">Vague 5</div>
-        <div class="wrange" style="color:var(--muted)">→ 35-38€?</div>
-        <div class="wstatus" style="color:var(--muted)">Cible</div>
-        <div class="wstatus"><span class="tag tag-purple">Attente</span></div>
+        <div class="wrange" style="color:var(--muted)">→ 32-38€?</div>
+        <div class="wstatus" style="color:var(--muted)">Cible MT</div>
+        <div class="wstatus" style="margin-top:4px"><span class="tag tp">Attente</span></div>
       </div>
     </div>
-    <div class="alert" style="margin-top:12px; background:rgba(248,81,73,0.06); border-color:rgba(248,81,73,0.25); color:var(--red)">
-      🔴 Règle d'Elliott intangible : la Vague 4 ne doit <strong>pas clôturer sous 21,44€</strong> (sommet de Vague 1). En dessous = invalidation du décompte.
+    <div class="alert alert-r" style="margin-top:12px">
+      🔴 Règle intangible : Vague 4 ne doit <strong>pas clôturer sous 21,14€</strong> (sommet de Vague 1 étendue). En dessous = invalidation du décompte haussier.
     </div>
   </div>
 
   <!-- Fibonacci -->
   <div class="section">
-    <div class="section-title">Extensions Fibonacci (validées marché)</div>
+    <div class="section-title">Extensions Fibonacci — Ancres vérifiées</div>
+    <div style="font-size:12px; color:var(--muted); margin-bottom:14px; font-family:'IBM Plex Mono',monospace;">
+      Point A (0%) = <span style="color:var(--green)">10,10€</span> · 3 Nov 2025 &nbsp;|&nbsp;
+      Point B (100%) = <span style="color:var(--blue)">21,14€</span> · pic intermédiaire
+    </div>
     <table>
-      <thead>
-        <tr>
-          <th>Niveau</th>
-          <th>Prix</th>
-          <th>Rôle</th>
-          <th>Validé</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Niveau</th><th>Prix</th><th>Rôle actuel</th><th>Statut</th></tr></thead>
       <tbody>
         <tr>
-          <td><span class="tag tag-blue">0%</span></td>
-          <td style="font-family:monospace">10,13 €</td>
-          <td>Ancrage — Bas majeur</td>
+          <td><span class="tag tb">0%</span></td>
+          <td style="font-family:monospace">10,10 €</td>
+          <td>Ancrage — creux 3 Nov 2025</td>
           <td>✅</td>
         </tr>
         <tr>
-          <td><span class="tag tag-blue">100%</span></td>
-          <td style="font-family:monospace">23,59 €</td>
-          <td>Support majeur actuel</td>
+          <td><span class="tag tb">100%</span></td>
+          <td style="font-family:monospace">21,14 €</td>
+          <td>Support majeur — limite absolue Vague 4</td>
           <td>✅</td>
         </tr>
         <tr>
-          <td><span class="tag tag-yellow">123,68%</span></td>
-          <td style="font-family:monospace">26,78 €</td>
-          <td>Résistance touchée</td>
-          <td>✅</td>
+          <td><span class="tag ty">123,68%</span></td>
+          <td style="font-family:monospace">23,75 €</td>
+          <td>Support pivot — niveau charnière CT</td>
+          <td>✅ Testé</td>
         </tr>
         <tr>
-          <td><span class="tag tag-yellow">138,2%</span></td>
-          <td style="font-family:monospace">28,73 €</td>
-          <td>Résistance freinant la hausse</td>
-          <td>✅</td>
+          <td><span class="tag ty">138,2%</span></td>
+          <td style="font-family:monospace">25,36 €</td>
+          <td>Zone actuelle — résistance immédiate</td>
+          <td>⚠️ En cours</td>
         </tr>
         <tr>
-          <td><span class="tag tag-green">161,8%</span></td>
-          <td style="font-family:monospace">~31,91 €</td>
-          <td>Pic exact du mouvement ← CONFIRME LE TRACÉ</td>
-          <td>✅✅</td>
+          <td><span class="tag tp">161,8%</span></td>
+          <td style="font-family:monospace">27,96 €</td>
+          <td>Prochaine résistance cible CT</td>
+          <td>🎯 Objectif</td>
+        </tr>
+        <tr>
+          <td><span class="tag tg">187,5%</span></td>
+          <td style="font-family:monospace">30,80 €</td>
+          <td>ATH atteint ← confirme le tracé</td>
+          <td>✅✅ ATH</td>
+        </tr>
+        <tr>
+          <td><span class="tag tg">200%</span></td>
+          <td style="font-family:monospace">32,18 €</td>
+          <td>Objectif MT — pas encore atteint</td>
+          <td>🚀 Cible MT</td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <!-- Supports & Résistances -->
+  <div class="section">
+    <div class="section-title">Supports &amp; Résistances clés</div>
+    <div class="sr-grid">
+      <div class="sr-box res">
+        <h4>🔴 Résistances</h4>
+        <div class="sr-item">
+          <span class="level" style="color:var(--red)">25,36 €</span>
+          <span class="reason">Fibo 138,2% — mur immédiat</span>
+        </div>
+        <div class="sr-item">
+          <span class="level" style="color:var(--red)">26,37 €</span>
+          <span class="reason">Objectif analystes 3 mois</span>
+        </div>
+        <div class="sr-item">
+          <span class="level" style="color:var(--red)">27,96 €</span>
+          <span class="reason">Fibo 161,8% — résistance forte</span>
+        </div>
+        <div class="sr-item">
+          <span class="level" style="color:var(--red)">30,80 €</span>
+          <span class="reason">ATH absolu</span>
+        </div>
+        <div class="sr-item">
+          <span class="level" style="color:var(--red)">32,18 €</span>
+          <span class="reason">Fibo 200% — cible ultime</span>
+        </div>
+      </div>
+      <div class="sr-box sup">
+        <h4>🟢 Supports</h4>
+        <div class="sr-item">
+          <span class="level" style="color:var(--green)">23,75 €</span>
+          <span class="reason">Fibo 123,68% — pivot clé</span>
+        </div>
+        <div class="sr-item">
+          <span class="level" style="color:var(--green)">21,14 €</span>
+          <span class="reason">Fibo 100% — support majeur</span>
+        </div>
+        <div class="sr-item">
+          <span class="level" style="color:var(--green)">~20,80 €</span>
+          <span class="reason">Plus bas semaine (04/03)</span>
+        </div>
+        <div class="sr-item">
+          <span class="level" style="color:var(--green)">~16,92 €</span>
+          <span class="reason">Fibo 61,8% — support fort</span>
+        </div>
+        <div class="sr-item">
+          <span class="level" style="color:var(--green)">14,31 €</span>
+          <span class="reason">Structure long terme</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Points d'entrée -->
   <div class="section">
     <div class="section-title">Points d'entrée échelonnés</div>
     <table>
-      <thead>
-        <tr>
-          <th>Priorité</th>
-          <th>Zone</th>
-          <th>Justification</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Priorité</th><th>Zone</th><th>Justification</th></tr></thead>
       <tbody>
         <tr>
-          <td><span class="tag tag-yellow">1er</span></td>
-          <td style="font-family:monospace; color:#fff">23,59 €</td>
-          <td>Fibo 100% — support majeur, test en cours</td>
+          <td><span class="tag ty">1er</span></td>
+          <td style="font-family:monospace; color:#fff">23,75 €</td>
+          <td>Fibo 123,68% — pivot majeur, support confirmé</td>
         </tr>
         <tr>
-          <td><span class="tag tag-green">2ème</span></td>
-          <td style="font-family:monospace; color:#fff">22,65 €</td>
-          <td>Structure + Bollinger médiane</td>
+          <td><span class="tag tg">2ème</span></td>
+          <td style="font-family:monospace; color:#fff">21,14 €</td>
+          <td>Fibo 100% — support absolu / limite Vague 4</td>
         </tr>
         <tr>
-          <td><span class="tag tag-green">3ème</span></td>
-          <td style="font-family:monospace; color:#fff">21,44 €</td>
-          <td>MM50 daily + limite Vague 4 Elliott</td>
+          <td><span class="tag tg">3ème</span></td>
+          <td style="font-family:monospace; color:#fff">20,80 €</td>
+          <td>Plus bas de la semaine + MM20 hebdo</td>
         </tr>
         <tr>
-          <td><span class="tag tag-blue">Extrême</span></td>
-          <td style="font-family:monospace; color:#fff">20,45 €</td>
-          <td>MM20 hebdo + gap à combler</td>
+          <td><span class="tag tb">Extrême</span></td>
+          <td style="font-family:monospace; color:#fff">16,92 €</td>
+          <td>Fibo 61,8% — entrée deep value si capitulation</td>
         </tr>
       </tbody>
     </table>
@@ -490,16 +471,16 @@
     <div class="scenarios">
       <div class="scenario bull">
         <div class="sc-title">🟢 Scénario haussier</div>
-        <p>Clôture hebdo au-dessus de 23,59€ → reprise de la Vague 5</p>
+        <p>Clôture hebdo > 23,75€ → Vague 5 en cours</p>
         <div class="levels">
-          <span style="color:var(--green)">▶ 23,59 → 26,78 → 28,73 → 35-38€</span>
+          <span style="color:var(--green)">▶ 25,36 → 27,96 → 30,80 → 32,18€</span>
         </div>
       </div>
       <div class="scenario bear">
         <div class="sc-title">🔴 Scénario baissier</div>
-        <p>Clôture hebdo sous 21,44€ = invalidation + Phase 4 Weinstein</p>
+        <p>Clôture hebdo < 21,14€ = invalidation Elliott + Phase 4 Weinstein</p>
         <div class="levels">
-          <span style="color:var(--red)">▶ Retour possible 16-18€</span>
+          <span style="color:var(--red)">▶ Retour 16,92 → 14,31€</span>
         </div>
       </div>
     </div>
@@ -507,36 +488,39 @@
 
   <!-- Indicateurs -->
   <div class="section">
-    <div class="section-title">Indicateurs CT (hebdo)</div>
+    <div class="section-title">Indicateurs (hebdomadaire)</div>
     <table>
-      <thead>
-        <tr><th>Indicateur</th><th>Valeur</th><th>Signal</th></tr>
-      </thead>
+      <thead><tr><th>Indicateur</th><th>Valeur</th><th>Signal</th></tr></thead>
       <tbody>
         <tr>
           <td>RSI (14) hebdo</td>
-          <td style="font-family:monospace">~72</td>
-          <td><span class="tag tag-yellow">Élevé — surveiller</span></td>
+          <td style="font-family:monospace">~78</td>
+          <td><span class="tag ty">Élevé — surveiller divergence</span></td>
         </tr>
         <tr>
           <td>MACD Zéro Lag</td>
           <td style="font-family:monospace">Remonte</td>
-          <td><span class="tag tag-green">Positif CT</span></td>
+          <td><span class="tag tg">Rebond CT confirmé</span></td>
         </tr>
         <tr>
           <td>Ichimoku</td>
-          <td style="font-family:monospace">Nuage épais</td>
-          <td><span class="tag tag-green">Tendance primaire OK</span></td>
+          <td style="font-family:monospace">Au-dessus nuage</td>
+          <td><span class="tag tg">Tendance primaire haussière</span></td>
         </tr>
         <tr>
           <td>MM20 hebdo</td>
           <td style="font-family:monospace">~20-21€</td>
-          <td><span class="tag tag-green">Support dynamique</span></td>
+          <td><span class="tag tg">Support dynamique intact</span></td>
         </tr>
         <tr>
-          <td>Volumes séance</td>
-          <td style="font-family:monospace">751K</td>
-          <td><span class="tag tag-green">Au-dessus moyenne</span></td>
+          <td>Bollinger (20,2)</td>
+          <td style="font-family:monospace">Bande haute ~30€</td>
+          <td><span class="tag ty">Retour en bande après excès</span></td>
+        </tr>
+        <tr>
+          <td>Volume séance</td>
+          <td style="font-family:monospace">~2,6M</td>
+          <td><span class="tag tg">Très fort — rebond validé</span></td>
         </tr>
       </tbody>
     </table>
@@ -544,7 +528,7 @@
 
   <div class="footnote">
     ⚠️ Analyse technique uniquement — pas un conseil en investissement. DYOR.<br>
-    AL2SI · 2CRSI · Euronext Paris
+    AL2SI · 2CRSI · Euronext Paris · ATH 30,80€
   </div>
 
   <button class="copy-btn" onclick="copyText()">📋 COPIER LE TEXTE POUR LE FORUM</button>
@@ -555,50 +539,69 @@
 
 <script>
 function copyText() {
-  const text = `📊 AL2SI (2CRSI) — Analyse Technique Complète | 23,30€ +8,62% | 2 mars 2026
+  const text = `📊 AL2SI (2CRSI) — Analyse Technique Complète | 25,10€ +17,02% | 4 mars 2026
+ATH : 30,80€ | Variation 5j : -16,05% | Objectif analystes 3m : 26,37€
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📌 PHASES DE WEINSTEIN
-• Phase 1 (2023 → mi-2024) : Accumulation longue à plat ~5-7€, volumes faibles ✅
-• Phase 2A (Août-Oct 2024) : Breakout MM30 semaines, volumes croissants ✅
-• Phase 2B (Nov 2024 → Fév 2026) : Hausse violente, MM20 respectée comme support ✅
-• Phase 3 ? (Mars 2026) : Pic à ~32€, rejet brutal → distribution ou simple correction ? ⚠️
-→ Clôture hebdo > 23,59€ ce vendredi = déterminante pour rester en Phase 2
+• Phase 1 (2022 → mi-2024) : Accumulation ~0,70-5€, volumes faibles ✅
+• Phase 2A (mi-2024 → Oct 2025) : Breakout MM30 semaines, volumes croissants ✅
+• Phase 2B (Oct 2025 → Fév 2026) : Accélération ~10€ → 30,80€, MM20 respectée ✅
+• Phase 3 ? (Mars 2026) : ATH 30,80€, rejet -16% sur 5j → distribution ou correction ? ⚠️
+→ Clôture hebdo > 23,75€ vendredi = signal de maintien en Phase 2
 
 🌊 VAGUES D'ELLIOTT
-• Vague 1 : 5€ → 10€ (2023) ✅
-• Vague 2 : 10€ → 8€ (correction) ✅
-• Vague 3 : 8€ → 32€ — VAGUE ÉTENDUE (161,8% Fibo confirmé) ✅✅
-• Vague 4 : 32€ → ? — ON EST ICI (correction normale en cours) ⚠️
-• Vague 5 : objectif 35-38€ si la structure tient
-⛔ Règle intangible : Vague 4 ne doit PAS clôturer sous 21,44€ (sommet Vague 1)
+• Vague 1 : ~0,7€ → 5€ (2022-2024) ✅
+• Vague 2 : 5€ → ~3€ (correction) ✅
+• Vague 3 : ~3€ → 30,80€ — VAGUE ÉTENDUE (ATH) ✅
+• Vague 4 : 30,80€ → ? — ON EST ICI ⚠️
+• Vague 5 : objectif 32-38€ si structure tient
+⛔ Règle intangible : Vague 4 ne DOIT PAS clôturer sous 21,14€
 
-📐 EXTENSIONS FIBONACCI (toutes validées par le marché)
-• 0%       → 10,13€ — Ancrage (bas majeur)
-• 100%     → 23,59€ — Support majeur actuel ← test en cours
-• 123,68%  → 26,78€ — Résistance touchée ✅
-• 138,2%   → 28,73€ — Résistance freinant la hausse ✅
-• 161,8%   → ~31,91€ — Pic EXACT du mouvement → valide tout le tracé ✅✅
+📐 EXTENSIONS FIBONACCI (ancres vérifiées)
+Point A (0%) = 10,10€ — 3 Nov 2025
+Point B (100%) = 21,14€ — pic intermédiaire
+• 0%       → 10,10€ — Ancrage bas
+• 100%     → 21,14€ — Support absolu / limite Vague 4
+• 123,68%  → 23,75€ — Pivot clé ← support actuel
+• 138,2%   → 25,36€ — Résistance immédiate ← zone actuelle
+• 161,8%   → 27,96€ — Prochaine résistance / cible CT
+• ~187,5%  → 30,80€ — ATH ← valide le tracé ✅✅
+• 200%     → 32,18€ — Cible MT (pas encore atteint)
+
+🔴 RÉSISTANCES
+• 25,36€ — Fibo 138,2% / mur immédiat
+• 26,37€ — Objectif analystes 3 mois
+• 27,96€ — Fibo 161,8% / résistance forte
+• 30,80€ — ATH absolu
+• 32,18€ — Fibo 200% / cible ultime
+
+🟢 SUPPORTS
+• 23,75€ — Fibo 123,68% / pivot clé
+• 21,14€ — Fibo 100% / support majeur
+• 20,80€ — Plus bas semaine + MM20 hebdo
+• 16,92€ — Fibo 61,8% / entrée deep value
 
 🎯 POINTS D'ENTRÉE ÉCHELONNÉS
-1) 23,59€ — Fibo 100% / support majeur (test actuel)
-2) 22,65€ — Structure + Bollinger médiane
-3) 21,44€ — MM50 daily + limite absolue Vague 4 Elliott
-4) 20,45€ — MM20 hebdo + gap à combler (entrée extrême)
+1) 23,75€ — Fibo 123,68% (pivot clé)
+2) 21,14€ — Fibo 100% (support absolu)
+3) 20,80€ — Plus bas semaine / MM20
+4) 16,92€ — Fibo 61,8% (deep value / capitulation)
 
 📈 SCÉNARIOS MT
-🟢 Haussier : Clôture hebdo > 23,59€ → reprise Vague 5 → 26,78 → 28,73 → 35-38€
-🔴 Baissier : Clôture hebdo < 21,44€ → invalidation + Phase 4 Weinstein → 16-18€
+🟢 Haussier : Clôture hebdo > 23,75€ → Vague 5 → 25,36 → 27,96 → 32,18€
+🔴 Baissier : Clôture hebdo < 21,14€ → Phase 4 Weinstein → 16,92 → 14,31€
 
 📊 INDICATEURS
-• RSI hebdo : ~72 → élevé, surveiller
-• MACD Zéro Lag : repart à la hausse → positif CT
-• Ichimoku : nuage épais = tendance primaire intacte
-• MM20 hebdo : ~20-21€ = support dynamique
-• Volumes : 751K (au-dessus moyenne) ✅
+• RSI hebdo : ~78 → élevé, surveiller divergence
+• MACD Zéro Lag : remonte → rebond CT confirmé
+• Ichimoku : au-dessus du nuage → tendance primaire haussière
+• MM20 hebdo : ~20-21€ → support dynamique intact
+• Volumes séance : ~2,6M → très fort, rebond validé
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️ Analyse technique uniquement — pas un conseil en investissement. DYOR.`;
+⚠️ Analyse technique uniquement — pas un conseil en investissement. DYOR.
+AL2SI · 2CRSI · Euronext Paris`;
 
   navigator.clipboard.writeText(text).then(() => {
     const toast = document.getElementById('toast');
